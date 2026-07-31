@@ -1,10 +1,10 @@
-#len(mdp) >= 12
+#len(final_mdp) >= 12
 #En python les import doivent être rangés deans l'ordre alphabétique(on regarde la 1ère lettre de l'import)
 
 import random
 import string
 
-choice = input("Quelle longueur voulez-vous pour votre mot de passe: ")
+choice = input("Quelle longueur voulez-vous pour votre mot de passe? ")
 
 mdp = []
 
@@ -16,17 +16,17 @@ mdp = []
 
 Maj = random.choice(string.ascii_uppercase)
 Min = random.choice(string.ascii_lowercase)
-number = random.choice(string.digits)
-sp = random.choice(string.punctuation)
+digit = random.choice(string.digits)
+special_char = random.choice(string.punctuation)
 
-mdp.extend([Maj,Min,number,sp])
+mdp.extend([Maj,Min,digit,special_char])
 
 random.shuffle(mdp) #random.shuffle() permet de mélanger une liste sur place de façon aléatoire
 
-result = ''.join(mdp)
+final_mdp = ''.join(mdp)
 
 choice = input("Quelle longueur voulez-vous pour votre mot de passe: ")
 
 print("--- Générateur de Mot de Passe Certifié ---")
 
-print(f"Votre mot de passe sécurisé: {result}")
+print(f"Votre mot de passe sécurisé: {final_mdp}")
