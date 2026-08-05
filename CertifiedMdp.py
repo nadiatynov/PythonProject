@@ -4,7 +4,7 @@
 import random
 import string
 
-choice = input("Quelle longueur voulez-vous pour votre mot de passe? ")
+choice = input("Quelle longueur voulez-vous pour votre mot de passe ? ")
 
 mdp = []
 
@@ -12,21 +12,30 @@ mdp = []
 #string.ascii_lowercase fait pareil à la diff que les lettres sont en miniscule
 #string.digits renvoie une chaine de caractère contenant les chiffres de 0 à 9
 #string.punctuation renvoie une chaine de caractères avec tous les caractères spéciaux 
-#random.choice() permet de choisir aléatoirement un élément dans une liste 
+#random.choice() permet de choisir aléatoirement un élément dans une liste ou une chaîne de caractères
 
 Maj = random.choice(string.ascii_uppercase)
 Min = random.choice(string.ascii_lowercase)
 digit = random.choice(string.digits)
 special_char = random.choice(string.punctuation)
+other_chars = string.ascii_letters + string.digits + string.punctuation
 
-mdp.extend([Maj,Min,digit,special_char])
+if int(choice) >= 12 :
 
-random.shuffle(mdp) #random.shuffle() permet de mélanger une liste sur place de façon aléatoire
+ mdp.extend([Maj,Min,digit,special_char])
 
-final_mdp = ''.join(mdp)
+ selection = random.sample(other_chars, int(choice) - 4)
+ 
+ mdp.extend(selection)
 
-choice = input("Quelle longueur voulez-vous pour votre mot de passe: ")
+ random.shuffle(mdp) #random.shuffle() permet de mélanger une liste sur place de façon aléatoire
 
-print("--- Générateur de Mot de Passe Certifié ---")
+ final_mdp = ''.join(mdp)
+ print("--- Générateur de Mot de Passe Certifié ---")
 
-print(f"Votre mot de passe sécurisé: {final_mdp}")
+ print(f"Votre mot de passe sécurisé: {final_mdp}")
+
+else :
+  print("Longueur du mot de passe inférieur à 12\nMinimum 12 caractères pour un mot de passe")
+
+
